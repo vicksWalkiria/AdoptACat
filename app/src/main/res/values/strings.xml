@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AdoptACat</string>
+
+    <string name="title_activity_splash">Splash</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="text_login">Login under construction</string>
+    <string name="text_main">Main Activity Under Construction</string>
+</resources>
