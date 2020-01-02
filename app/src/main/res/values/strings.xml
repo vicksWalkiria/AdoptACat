@@ -6,4 +6,18 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="text_login">Login under construction</string>
     <string name="text_main">Main Activity Under Construction</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="no_account">Don\'t Have an Account?  Sign Up</string>
+    <string name="password">Password</string>
+    <string name="user_name">User name</string>
+    <string name="error">Error</string>
+    <string name="complete_all_the_fields">You must fill all the fields</string>
 </resources>
