@@ -1,11 +1,15 @@
 package com.walkiriaapps.adoptacat;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.android.volley.Request;
 import com.walkiriaapps.adoptacat.Classes.AppData;
@@ -23,6 +27,7 @@ public class Login extends AdoptACatActivity {
     private Button loginButton;
     private TextView signUpButton;
     private ProgressBar progressBar;
+    private int SIGNUP_TRY = 10;
 
     @Override
     public void setActivityName() {
@@ -71,5 +76,31 @@ public class Login extends AdoptACatActivity {
 
             }
         });
+
+        ////////////////////////////////////////// PHASE 2 //////////////////////////////////////////////
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(Login.this, SignUpActivity.class);
+                startActivityForResult(mainIntent, SIGNUP_TRY);
+            }
+        });
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == SIGNUP_TRY && resultCode == Activity.RESULT_OK)
+        {
+            userName.setText(prefs.getString(AppData.USER_NAME,""));
+            password.setText(prefs.getString(AppData.PASSWORD,"" ));
+        }
+        else
+        {
+            userName.setText("");
+            password.setText("");
+        }
     }
 }

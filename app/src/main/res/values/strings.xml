@@ -20,4 +20,9 @@
     <string name="user_name">User name</string>
     <string name="error">Error</string>
     <string name="complete_all_the_fields">You must fill all the fields</string>
+    <string name="action_sign_up">Sign Up</string>
+    <string name="password_repeat">Repeat password</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="signup_error">Signup Error</string>
+    <string name="signup_successful">Welcome onboard!</string>
 </resources>

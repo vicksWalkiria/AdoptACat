@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.walkiriaapps.adoptacat.AdoptACatActivity;
 import com.walkiriaapps.adoptacat.MainActivity;
+
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -13,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
 public class AppData {
 
     //VARIABLES//
-    public static String token ="";
+    public static String token = "";
 
     //PREFERENCES//
     public static final String USER_NAME = "userName";
@@ -22,21 +23,20 @@ public class AppData {
     //SCREEN NAMES//
     public static final String SPLASH_SCREEN = "SplashScreen";
     public static final String LOGIN_SCREEN = "LoginScreen";
-
+    public static final String SIGNUP_SCREEN = "SignUpScreen";
 
 
     //SERVICES//
     private static final String ROOT_URL = "http://10.0.2.2/adoptACat/api/v1/";
-    public static final String LOGIN_SERVICE_URL = ROOT_URL+"login.php";
-
+    public static final String LOGIN_SERVICE_URL = ROOT_URL + "login.php";
+    public static final String SIGNUP_SERVICE_URL = ROOT_URL + "signup.php";
 
 
     //SERVICES RESPONSES//
     public static final String JSON_DATA_FIELD = "data";
     public static final String JSON_OK = "OK";
-    public static final String TOKEN_FIELD = "token" ;
-    public static final String MESSAGE_FIELD = "message" ;
-
+    public static final String TOKEN_FIELD = "token";
+    public static final String MESSAGE_FIELD = "message";
 
 
     public static String encodePassword(String string) {
