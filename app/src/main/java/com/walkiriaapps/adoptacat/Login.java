@@ -34,9 +34,11 @@ public class Login extends AdoptACatActivity {
 
         try {
             JSONObject object = new JSONObject(response);
-            if(object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.MESSAGE_FIELD).equals(AppData.JSON_OK))
-            {
-                AppData.loginOK((AdoptACatActivity)this, object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.TOKEN_FIELD), prefs, userName.getText().toString(), AppData.encodePassword(password.getText().toString()));
+            String message = object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.MESSAGE_FIELD);
+            if (message.equals(AppData.JSON_OK)) {
+                AppData.loginOK((AdoptACatActivity) this, object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.TOKEN_FIELD), prefs, userName.getText().toString(), AppData.encodePassword(password.getText().toString()));
+            } else {
+                displayAlertDialog(getString(R.string.error), message);
             }
 
         } catch (JSONException e) {
@@ -58,13 +60,10 @@ public class Login extends AdoptACatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(userName.getText().toString().length() == 0 || password.getText().toString().length() == 0)
-                {
+                if (userName.getText().toString().length() == 0 || password.getText().toString().length() == 0) {
                     displayAlertDialog(getString(R.string.error), getString(R.string.complete_all_the_fields));
-                }
-                else
-                {
-                    Map<String,String> params = new HashMap<String,String>();
+                } else {
+                    Map<String, String> params = new HashMap<String, String>();
                     params.put("user_name", userName.getText().toString());
                     params.put("password", AppData.encodePassword(password.getText().toString()));
                     new VolleyRequestClassWalkiria(Login.this, AppData.LOGIN_SERVICE_URL, Request.Method.GET, params, progressBar);
