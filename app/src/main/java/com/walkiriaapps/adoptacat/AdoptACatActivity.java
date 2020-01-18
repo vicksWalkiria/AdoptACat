@@ -16,8 +16,10 @@ public abstract class AdoptACatActivity extends AppCompatActivity {
     protected SharedPreferences prefs;
 
     public abstract void setActivityName();
-    public abstract void onVolleyResponse(String response);
 
+    // PHASE #3 modification => added request parameter to distinguiss different calls in the same activity
+    public abstract void onVolleyResponse(String response, int request);
+    //
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         prefs = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);

@@ -25,4 +25,6 @@
     <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="signup_error">Signup Error</string>
     <string name="signup_successful">Welcome onboard!</string>
+    <string name="permanent_adoption">Permanent adoption</string>
+    <string name="temporary_adoption">Temporary adoption</string>
 </resources>

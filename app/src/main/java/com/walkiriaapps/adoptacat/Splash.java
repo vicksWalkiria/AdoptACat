@@ -24,13 +24,16 @@ public class Splash extends AdoptACatActivity {
     }
 
     @Override
-    public void onVolleyResponse(String response) {
+    public void onVolleyResponse(String response, int request) {
         try {
             JSONObject object = new JSONObject(response);
 
             if (object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.MESSAGE_FIELD).equals(AppData.JSON_OK)) {
                 AppData.loginOK((AdoptACatActivity) Splash.this, object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.TOKEN_FIELD), prefs,
                         prefs.getString(AppData.USER_NAME, ""), prefs.getString(AppData.PASSWORD, ""));
+                // Phase #3 - add user id to AppData
+                AppData.userId = object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.USER_ID_FIELD);
+
             }
             else
             {
@@ -57,7 +60,7 @@ public class Splash extends AdoptACatActivity {
                     Map<String,String> params = new HashMap<String,String>();
                     params.put("user_name", prefs.getString(AppData.USER_NAME,""));
                     params.put("password", prefs.getString(AppData.PASSWORD,""));
-                    new VolleyRequestClassWalkiria(Splash.this, AppData.LOGIN_SERVICE_URL, Request.Method.GET, params, null);
+                    new VolleyRequestClassWalkiria(Splash.this, AppData.LOGIN_SERVICE_URL, Request.Method.GET, params, null,0);
 
                 } else {
                     //Display Login-Register screen

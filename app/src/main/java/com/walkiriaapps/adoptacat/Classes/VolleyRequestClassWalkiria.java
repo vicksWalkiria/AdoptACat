@@ -16,7 +16,8 @@ import java.util.Map;
 
 public class VolleyRequestClassWalkiria {
 
-    public VolleyRequestClassWalkiria(final AdoptACatActivity ctx, String url, int requestMethod, final Map<String, String> params, final ProgressBar progressBar) {
+    // Phase #3 modification, added requestId
+    public VolleyRequestClassWalkiria(final AdoptACatActivity ctx, String url, int requestMethod, final Map<String, String> params, final ProgressBar progressBar, final int requestId) {
         if (progressBar != null) {
             progressBar.setVisibility(View.VISIBLE);
         }
@@ -26,7 +27,7 @@ public class VolleyRequestClassWalkiria {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        ctx.onVolleyResponse(response);
+                        ctx.onVolleyResponse(response, requestId);
                         if (progressBar != null) {
                             progressBar.setVisibility(View.GONE);
                         }

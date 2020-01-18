@@ -33,7 +33,7 @@ public class SignUpActivity extends AdoptACatActivity {
     }
 
     @Override
-    public void onVolleyResponse(String response) {
+    public void onVolleyResponse(String response, int request) {
 
         try {
             Log.d("WALKIRIA", "SIGNUP RESPONSE: "+response);
@@ -87,7 +87,7 @@ public class SignUpActivity extends AdoptACatActivity {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("user_name", userName.getText().toString());
                     params.put("password", AppData.encodePassword(password.getText().toString()));
-                    new VolleyRequestClassWalkiria(SignUpActivity.this, AppData.SIGNUP_SERVICE_URL, Request.Method.POST, params, progressBar);
+                    new VolleyRequestClassWalkiria(SignUpActivity.this, AppData.SIGNUP_SERVICE_URL, Request.Method.POST, params, progressBar, 0);
                 }
             }
         });

@@ -35,13 +35,15 @@ public class Login extends AdoptACatActivity {
     }
 
     @Override
-    public void onVolleyResponse(String response) {
+    public void onVolleyResponse(String response, int requestId) {
 
         try {
             JSONObject object = new JSONObject(response);
             String message = object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.MESSAGE_FIELD);
             if (message.equals(AppData.JSON_OK)) {
                 AppData.loginOK((AdoptACatActivity) this, object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.TOKEN_FIELD), prefs, userName.getText().toString(), AppData.encodePassword(password.getText().toString()));
+                // Phase #3 - add user id to AppData
+                AppData.userId = object.getJSONObject(AppData.JSON_DATA_FIELD).getString(AppData.USER_ID_FIELD);
             } else {
                 displayAlertDialog(getString(R.string.error), message);
             }
@@ -71,7 +73,7 @@ public class Login extends AdoptACatActivity {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("user_name", userName.getText().toString());
                     params.put("password", AppData.encodePassword(password.getText().toString()));
-                    new VolleyRequestClassWalkiria(Login.this, AppData.LOGIN_SERVICE_URL, Request.Method.GET, params, progressBar);
+                    new VolleyRequestClassWalkiria(Login.this, AppData.LOGIN_SERVICE_URL, Request.Method.GET, params, progressBar, 0);
                 }
 
             }
