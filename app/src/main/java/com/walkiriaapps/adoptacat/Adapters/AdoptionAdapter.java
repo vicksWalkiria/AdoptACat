@@ -1,6 +1,7 @@
 package com.walkiriaapps.adoptacat.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,17 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
+import com.walkiriaapps.adoptacat.CatActivity;
 import com.walkiriaapps.adoptacat.Classes.AppData;
 import com.walkiriaapps.adoptacat.Classes.Cat;
 import com.walkiriaapps.adoptacat.R;
 
 import java.util.List;
 
-public class AdoptionAdapter  extends RecyclerView.Adapter<AdoptionAdapter.ViewHolder> {
+public class AdoptionAdapter  extends RecyclerView.Adapter<AdoptionAdapter.ViewHolder>{
 
     private final List<Cat> cats;
     private final Context ctx;
@@ -80,11 +83,15 @@ public class AdoptionAdapter  extends RecyclerView.Adapter<AdoptionAdapter.ViewH
         return cats.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+
+
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         final ImageView catPicture;
         final TextView catName;
         final TextView adoptionState;
+        final CardView cardView;
 
         ViewHolder (View v)
         {
@@ -93,6 +100,20 @@ public class AdoptionAdapter  extends RecyclerView.Adapter<AdoptionAdapter.ViewH
             catPicture = v.findViewById(R.id.cat_picture);
             catName = v.findViewById(R.id.cat_name);
             adoptionState = v.findViewById(R.id.adoption_state);
+            cardView = v.findViewById(R.id.card_view);
+
+            cardView.setOnClickListener(this);
+        }
+        //PHASE #5
+
+        @Override
+        public void onClick(View v) {
+            int pos = getAdapterPosition();
+            Intent i = new Intent(ctx, CatActivity.class);
+            i.putExtra(AppData.CAT_ID, cats.get(pos).getId()+"");
+            ctx.startActivity(i);
         }
     }
+
+
 }

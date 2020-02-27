@@ -26,6 +26,11 @@ public class AppData {
     public static final String LOGIN_SCREEN = "LoginScreen";
     public static final String SIGNUP_SCREEN = "SignUpScreen";
     public static final String MAIN_SCREEN = "MainScreen";
+    public static final String CAT_SCREEN = "CatScreen";
+
+
+    //PARAMS
+    public static final String CAT_ID = "cat_id";
 
 
     //SERVICES//
@@ -34,6 +39,7 @@ public class AppData {
     public static final String LOGIN_SERVICE_URL = API_URL + "login.php";
     public static final String SIGNUP_SERVICE_URL = API_URL + "signup.php";
     public static final String ADOPT_SERVICE_URL = API_URL + "get_cats.php";
+    public static String GET_CAT_SERVICE_URL = API_URL + "get_cat.php";
     public static final String PICTURES_URL = ROOT_URL + "pictures";
 
 
@@ -45,6 +51,7 @@ public class AppData {
     public static final String MESSAGE_FIELD = "message";
     public static final String USER_ID_FIELD = "user_id";
     public static final String CATS_FIELD = "cats";
+    public static final String CAT_FIELD = "cat";
     public static final String JSON_200 = "200";
     public static final String CODE = "code";
 
@@ -54,8 +61,7 @@ public class AppData {
     //REQUESTS_IDs
     public static final int REQUEST_ADOPTION = 1;
     public static final int REQUEST_TEMPORARY = 0;
-
-
+    public static final int REQUEST_GET_CAT = 1;
 
 
     public static String encodePassword(String string) {

@@ -4,7 +4,6 @@ package com.walkiriaapps.adoptacat;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,6 +45,7 @@ public class MainActivity extends AdoptACatActivity {
     @Override
     public void onVolleyResponse(String response, int requestId) {
 
+        Log.d("WALKIRIA", "RESPONSE: "+response);
         try {
             JSONObject object = new JSONObject(response);
             String code = object.getString(AppData.CODE);
@@ -122,18 +122,19 @@ public class MainActivity extends AdoptACatActivity {
         
         recyclerViewAdoptions.setLayoutManager(layoutManagerAdoptions);
         recyclerViewTemporary.setLayoutManager(layoutManagerTemporary);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-
         catsForAdoption = new ArrayList<Cat>();
         Map<String, String> params = new HashMap<String, String>();
         params.put("user_id", AppData.userId);
         params.put("token", AppData.token);
         params.put("adoption", AppData.REQUEST_ADOPTION + "");
+        Log.d("WALKIRIA", "Params: "+params);
+
         new VolleyRequestClassWalkiria(MainActivity.this, AppData.ADOPT_SERVICE_URL, Request.Method.GET, params, progressBar, AppData.REQUEST_ADOPTION);
     }
 }

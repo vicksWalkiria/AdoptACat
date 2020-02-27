@@ -70,4 +70,8 @@ public class Cat {
                 ", adoption=" + adoption +
                 '}';
     }
+
+    public String toStringForEmail() {
+        return "\nID: "+id+"\nName: "+name;
+    }
 }

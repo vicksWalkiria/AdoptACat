@@ -21,6 +21,10 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".CatActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName="MainActivity"/>
+        <activity
             android:name=".Splash"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"

@@ -27,4 +27,8 @@
     <string name="signup_successful">Welcome onboard!</string>
     <string name="permanent_adoption">Permanent adoption</string>
     <string name="temporary_adoption">Temporary adoption</string>
+    <string name="adopt_me">Adopt me now!</string>
+    <string name="email_subject">I want to adopt this cat!</string>
+    <string name="email_content">Hi! I\'m interested in adopting this cat:</string>
+    <string name="send_email">Send email...</string>
 </resources>
