@@ -31,4 +31,6 @@
     <string name="email_subject">I want to adopt this cat!</string>
     <string name="email_content">Hi! I\'m interested in adopting this cat:</string>
     <string name="send_email">Send email...</string>
+    <string name="logout">Logout</string>
+    <string name="about">About</string>
 </resources>

@@ -2,10 +2,17 @@ package com.walkiriaapps.adoptacat;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,11 +74,9 @@ public class MainActivity extends AdoptACatActivity {
                     for (int i = 0; i < message.length(); i++) {
                         catsForAdoption.add(new Cat(message.getJSONObject(i)));
                     }
-
                     /*
                     Create first adapter
                      */
-
                     adoptionsAdapter = new AdoptionAdapter(catsForAdoption, Glide.with(MainActivity.this), ctx, AppData.REQUEST_ADOPTION);
                     recyclerViewAdoptions.setAdapter(adoptionsAdapter);
 
@@ -91,7 +96,6 @@ public class MainActivity extends AdoptACatActivity {
                     for (int i = 0; i < message.length(); i++) {
                         catsForTemporaryAdoption.add(new Cat(message.getJSONObject(i)));
                     }
-
 
                     temporaryAdapter = new AdoptionAdapter(catsForTemporaryAdoption, Glide.with(MainActivity.this), ctx, AppData.REQUEST_TEMPORARY);
                     recyclerViewTemporary.setAdapter(temporaryAdapter);
@@ -136,5 +140,29 @@ public class MainActivity extends AdoptACatActivity {
         Log.d("WALKIRIA", "Params: "+params);
 
         new VolleyRequestClassWalkiria(MainActivity.this, AppData.ADOPT_SERVICE_URL, Request.Method.GET, params, progressBar, AppData.REQUEST_ADOPTION);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.my_options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.logout)
+        {
+            Toast.makeText(this,getString(R.string.logout),Toast.LENGTH_LONG).show();
+            SharedPreferences.Editor edit = prefs.edit();
+
+            edit.putString(AppData.USER_NAME, "");
+            edit.putString(AppData.PASSWORD, "");
+            edit.commit();
+
+            startActivity(new Intent(MainActivity.this,Login.class));
+            finish();
+        }
+        return true;
     }
 }
